@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Search Drugs</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Search Drugs</h1>
+    <form method="POST" action="/search_drugs">
+        <label for="search_query">Search Query:</label>
+        <input type="text" id="search_query" name="search_query"><br><br>
+        <button type="submit">Search</button>
+    </form>
+    <br>
+    {% if drugs %}
+    <table>
+        <thead>
+            <tr>
+                <th>ID</th>
+                <th>Name</th>
+                <th>Stock</th>
+                <th>Cost</th>
+                <th>Shelf Life</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for drug in drugs %}
+            <tr>
+                <td>{{ drug[0] }}</td>
+                <td>{{ drug[1] }}</td>
+                <td>{{ drug[2] }}</td>
+                <td>{{ drug[3] }}</td>
+                <td>{{ drug[4] }}</td>
+                <td>
+                    <a href="/edit_drug/{{ drug[0] }}">Edit</a>
+                    <a href="/delete_drug/{{ drug[0] }}">Delete</a>
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+    {% else %}
+    <p>No drugs found.</p>
+    {% endif %}
+</body>
+</html>

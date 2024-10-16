@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Delete Drug</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles.css') }}">
+</head>
+<body>
+    <h1>Are you sure you want to delete this drug?</h1>
+    <p>Name: {{ drug.name }}</p>
+    <p>Stock: {{ drug.stock }}</p>
+    <p>Cost: {{ drug.cost }}</p>
+    <p>Shelf Life: {{ drug.shelf_life }}</p>
+    <a href="/delete_drug/{{ drug.id }}">Yes, delete it</a>
+    <a href="/browse_drugs">No, go back</a>
+</body>
+</html>
